@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const config = require("../config.json")
 
 module.exports = {
-    description: "mute user",
+    description: "unmute user",
     category: "moderation",
     testOnly: true,
     slash: true,
@@ -12,7 +12,7 @@ module.exports = {
         {
             name: "user",
             required: true,
-            description: "user to mute",
+            description: "user to unmute",
             type: 6,
         }
     ],
@@ -28,7 +28,7 @@ module.exports = {
             return;
         } else {
 
-        unmutedmember.roles.remove(config.mute) //if reason, kick
+        unmutedmember.roles.remove(config.mute) 
             .catch(error => interaction.reply({ content: `Sorry ${message.author} I couldn't unmute because of : ${error}`, ephemeral: true})); //if error, display error
         interaction.reply({content: `${unmutedmember.user} has been unmuted by ${interaction.user.username}!`, ephemeral: true});
     
